@@ -27,7 +27,7 @@ servidor.listen(puerto, function() {
 
 //base de datos con info que ya tengo-> PARA BUSQUEDA.HTML
 
-var MongoClient = require('mongodb').MongoClient;
+/* var MongoClient = require('mongodb').MongoClient;
 
 var url = "mongodb+srv://dbNataliaPetito:dbRatainmunda@cluster0-fusyk.mongodb.net/test?retryWrites=true&w=majority";
 
@@ -53,6 +53,7 @@ MongoClient.connect(url, async function(err, client) {
 //no estoy segura de para qué me serviría esto del find.toArray; en la terminal..
 //..me da resultado, pero ¿qué utilidad tiene para algún servidor?
 
+
     client.close(); 
 })
 
@@ -60,3 +61,4 @@ MongoClient.connect(url, async function(err, client) {
 //..modificarlo o eliminar y se actualiza el contenido de la pag inmediatamente..
 //..sin tener que hacer refresh
 
+*/
