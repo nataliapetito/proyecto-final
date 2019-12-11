@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cartoncycle</title>
+    <!-- <link rel = "stylesheet" href = "/secciones/diseño-secciones.css">  -->
+</head>
+
+<body>
+    <!-- SECCION DE IDEAS YA EN PANTALLA-->
+
+    <section class = "onscreen"><h2>sssOjalá encuentres algo que llame tu atención :)</h2>
+    <!-- MOSTRAR ACÁ EJEMPLOS DE RECICLADOS DE VIDRIOS (conexión con database)  -->
+    <p class = "ideas_carton"></p> <!-- hice abajo el script de esto-->
+    </section>
+    
+
+<!-- SECCION PARA QUE EL USUARIO AGREGUE SUS IDEAS-->
+
+    <section class = "add"><h2>¿Querés sumar tu idea?</h2>
+        <!--<form method = "POST" action = A BASE DE DATOS O ACA MISMO?
+    </form>-->
+        <form>
+            <input id = "newIdea">
+        </form>
+        <button>Subir</button>
+    </section>
+
+<!-- CONECTANDO CON BASE DE DATOS index.js -->
+    <script src = "../index/base-datos/index.js">
+        
+        async function resultado_vidrios() {
+            var respuesta = await fetch ('/carton-reciclaje')
+            var lista_carton_obj = await respuesta.json()
+
+            var pcarton = document.querySelector('.ideas_carton')
+
+            var lista_carton_texto = lista_carton_obj.map(function(carton) {
+                return `<p>${db.collection.carton}</p>`
+                //USO db_name.carton POR SER NOMBRE DE VARIABLE EN index.js
+                //No sé qué se pone exactamente en su lugar 
+            })
+
+            var contenido = lista_carton_texto.join('-')
+
+            ul.innerHTML = contenido
+        }
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+h1 {
+    margin-top: 6vh;
+    margin-bottom: 6vh;
+}
+
+p {
+    margin-top: 4vh;
+    text-align:justify
+}
+
+h2 {
+    margin-top: 4vh;
+
+}
+
+nav {
+    text-align: right;
+}
+
+#buscar {
+    display: inline-flex; 
+    color: red;
+}
+
+div.accessTo {
+    /*background-color: red;*/
+    columns: 4;
+    margin-top: 10vh;
+    flex-flow: column wrap;
+    flex-direction: column;
+}
+
+button {
+    height: auto;
+    width: 10vw;
+    color: lightgreen;
+    cursor: pointer;
+    /*align-content: center;
+    text-align: center;
+    justify-content: center;*/
+    background-color: green;
+    border-color: black;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+}
