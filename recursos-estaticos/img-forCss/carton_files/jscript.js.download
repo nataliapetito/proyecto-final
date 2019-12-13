@@ -1,0 +1,128 @@
+var $nav = $('.header');
+var $navTop = $nav.offset().top;
+var pegarNav = function(){
+    var $scrollTop = $(window).scrollTop();
+    if ($scrollTop >= $navTop){
+        $nav.addClass('pegado');
+    }else{
+        $nav.removeClass('pegado');
+    }
+}
+$(window).on('scroll', pegarNav);
+listo();
+function listo(){
+    $('.menu').append('<li><a href="#buscar" class="buscar icon-search"></a></li>');
+    $('.blog__wrapper').on('click', '.blog__share-icon', abrir);
+    $('.header__nav').on('click','.buscar',search);
+    $('.boton_envio').on('click', validate);
+        function abrir(){
+            var shareIcon = $(this);
+            var shareWrapper = shareIcon.next();
+            shareWrapper.addClass('open');
+            $(shareWrapper).on('click','.close',cerrar);
+                function cerrar(){
+                    $(this).parent().removeClass('open');
+                }
+        }
+        function search(){
+            var searchBtn = $(this);
+            var searchWrapper = $('.search');
+            if($(this).hasClass('icon-search')){
+                $(this).removeClass('icon-search').addClass('icon-cross');
+                searchWrapper.slideDown();
+            }else{
+                $(this).removeClass('icon-cross').addClass('icon-search');
+                searchWrapper.slideUp();
+            }
+        }   
+}
+function validate(){
+    var name = $(".name").val();
+        phone = $(".phone").val();
+        email = $(".email").val();
+        message = $(".message").val();
+        validacion_email = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
+    if (name == "") {
+        $(".name").focus();
+        return false;
+    }else if(phone == ""){
+        $(".phone").focus();
+        return false;
+    }else if(email == "" || !validacion_email.test(email)){
+        $(".email").focus();
+        return false;
+    }else if(message == ""){
+        $(".message").focus();
+        return false;
+    }else{
+        $('.ajaxgif').removeClass('hide');
+        var datos = '&name='+ name +
+                    '&email='+ email +
+                    '&phone='+ phone +
+                    '&message='+ message;
+        $.ajax({
+            type: "POST",
+            url: "../wp-content/themes/Antocas5/process.php",
+            data: datos,
+            success: function() {
+                $('.ajaxgif').hide();
+                $('.name,.email,.phone,.message').val('');
+                $('.boton_envio').text('Enviado con Éxito!').css({'background':'#09dc26','border':'1px solid #09dc26'});
+            },
+            error: function() {
+                $('.ajaxgif').hide();
+                    $('.msg').text('Hubo un error!').addClass('msg_error').animate({ 'margin-left' : '8px' }, 300);
+            }
+            });
+            return false;    
+    }
+}
+
+// function([string1, string2],target id,[color1,color2])    
+consoleText(['¡Hola!', 'llegaste', '¿en que podemos ayudarte?'], 'text',['#ff8814','#00fdbc','#FFF']);
+function consoleText(words, id, colors) {
+    if (colors === undefined) colors = ['#fff'];
+    var visible = true;
+    var con = document.getElementById('console');
+    var letterCount = 1;
+    var x = 1;
+    var waiting = false;
+    var target = document.getElementById(id)
+    target.setAttribute('style', 'color:' + colors[0])
+
+    window.setInterval(function() {
+        if (letterCount === 0 && waiting === false) {
+            waiting = true;
+            target.innerHTML = words[0].substring(0, letterCount)
+            window.setTimeout(function() {
+                var usedColor = colors.shift();
+                colors.push(usedColor);
+                var usedWord = words.shift();
+                words.push(usedWord);
+                x = 1;
+                target.setAttribute('style', 'color:' + colors[0])
+                letterCount += x;
+                waiting = false;
+          }, 1000)
+        } else if (letterCount === words[0].length + 1 && waiting === false) {
+            waiting = true;
+             window.setTimeout(function() {
+                x = -1;
+                letterCount += x;
+                waiting = false;
+            }, 1000)
+        } else if (waiting === false) {
+            target.innerHTML = words[0].substring(0, letterCount)
+            letterCount += x;
+        }
+    }, 120)
+    window.setInterval(function() {
+        if (visible === true) {
+            con.className = 'console-underscore hidden'
+            visible = false;
+        } else {
+            con.className = 'console-underscore'
+            visible = true;
+        }
+  }, 400)
+}

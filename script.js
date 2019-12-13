@@ -1,33 +1,38 @@
-var http = require('http')
-var fs = require('fs')
-var puerto = 5506
-var host = "127.0.0.1"
+var express = require('express')
+var bodyParser = require('body-parser')
+var multer = require('multer')
 
-function leer_archivo(rutaArchivo) {
-    return fs.readFileSync(rutaArchivo, 'utf-8')
-}
+//SERVIDOR PRINCIPAL
+var app = express()
+var puerto1 = process.env.PORT || 3000
 
-// SERVER PARA ./INDEX
+app.use(express.static('./recursos-estaticos'))
 
-var servidor = http.createServer(function(cons, res) {
-    if (cons.url === "/index" && cons.method === "GET") {
-        var principal = leer_archivo("index.html");
-        res.end(principal)
-    }
-    else {
-        res.statusCode = 404
-        res.end("Ándale, encuentra el error que quiero mostrar mi contenido wey")
-    }
+app.get("/busqueda", async function(consulta, respuesta) {
+    await db.collection("tiposReciclados")
+    findOne( {categoria: c.params.buscar }) /*NO ENTIENDO CÓMO BUSCAR*/
 })
 
-servidor.listen(puerto, function() {
-    console.log(`Escuchando en http://${host}:${puerto}/`)
+app.listen(puerto1, function() {
+    console.log(`Servidor escuchando en ${puerto1}`)
+
 })
 
+//PARA AGREGAR IDEAS DE RECICLADO
+var upload_img = multer({ dest: "recursos-estaticos/secciones/images" })
+var upload_txt = multer({ dest: "recursos-estaticos/secciones/text" }) 
 
-//base de datos con info que ya tengo-> PARA BUSQUEDA.HTML
+app.post("/index", upload_img.single("foto_ejemplo"), upload_txt.single("newIdea"), function(consulta, respuesta){
+    db.collection.push({ 
+        newIdea: consulta.body.newIdea,
+        foto_ejemplo: "/images" + consulta.file.filename
+    })
+        respuesta.status(201).redirect("/reciclaje-carton")
+})
 
-/* var MongoClient = require('mongodb').MongoClient;
+//base de datos con info que ya tengo
+
+var MongoClient = require('mongodb').MongoClient;
 
 var url = "mongodb+srv://dbNataliaPetito:dbRatainmunda@cluster0-fusyk.mongodb.net/test?retryWrites=true&w=majority";
 
@@ -61,4 +66,3 @@ MongoClient.connect(url, async function(err, client) {
 //..modificarlo o eliminar y se actualiza el contenido de la pag inmediatamente..
 //..sin tener que hacer refresh
 
-*/

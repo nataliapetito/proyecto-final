@@ -1,18 +1,101 @@
+html {
+    background-image: url("/recursos-estaticos/img-forCss/fondo.jpeg")
+}
+
+body {
+    font-family: 'Solway', serif;
+    margin-left: 20vw;
+}
+
 h1 {
-    color: red;
-    background-color: green;
+    font-weight: bold;
+    color: #000000;    
+    text-align: center;   
+}
+
+.titulo {
+    color: white;
+    text-align: center;
+    width: 30vw;
     margin-top: 6vh;
     margin-bottom: 6vh;
+    margin-left: 15vw;
+    margin-right: 15vw;
+    padding-top: 3vh;
+    padding-bottom: 3vh;
+    border-radius: 8px;   
+    background-color: #ffffff;
+    border: 1px solid black;
+    opacity: 0.5;
+    filter: alpha(opacity=60);
 }
+
+.animada  {
+    color: white;
+    font-size: 20px;
+    margin-top: 10vh;
+    width: 60vw;
+    text-align: justify;
+    line-height: 6vh;
+    animation-duration: 5s;
+    animation-name: slidein;
+      }
+      
+      @keyframes slidein {
+        from {
+          margin-left: 20%;
+          width: 30vw;
+        }
+      
+        to {
+          margin-left: 0%;
+          width: 60vw;
+        }
+      }
 
 p {
-    margin-top: 4vh;
-    text-align:justify
-}
+    color: white;
+    font-size: 20px;
+    margin-top: 10vh;
+    width: 60vw;
+    text-align: justify;
+    line-height: 6vh;
+    /*animation-duration: 5s;
+    animation-name: slidein;
+      }
+      
+      @keyframes slidein {
+        from {
+          margin-left: 20%;
+          width: 30vw;
+        }
+      
+        to {
+          margin-left: 0%;
+          width: 60vw;
+        }*/
+      }
 
 h2 {
-    margin-top: 4vh;
+    color: white;
+    font-size: 3vh;
+}  
 
+.subtitulo {
+    border-radius: 8px;
+    background-color: black;
+    margin-top: 6vh;
+    margin-right: 30vw;
+    padding-top:0.1vh;
+    padding-bottom: 0.5vh;
+    padding-left: 0.8vw;
+    width: 15vw;
+    height: 8vh;
+    transition: width 3s;
+}
+
+.subtitulo:hover {
+    width: 30vw;
 }
 
 nav {
@@ -21,12 +104,26 @@ nav {
 
 #buscar {
     display: inline-flex; 
-    color: red;
+    width: 15vw;
+    padding-left: 0.5vw;
+    padding-right: 0.5vw;
+    border-radius: 15px;
+    margin-right: 1vw;
+    margin-top: 1.2vh;
+    /*color: ;*/
+}
+
+#search_button {
+    display: inline-flex; 
+    width: 5vw;
+    margin-right: 1vw;
+    margin-top: 1.2vh;
 }
 
 div.accessTo {
     /*background-color: red;*/
     columns: 4;
+    width: 60vw;
     margin-top: 10vh;
     flex-flow: column wrap;
     flex-direction: column;
@@ -36,13 +133,94 @@ button {
     height: auto;
     width: 10vw;
     color: lightgreen;
+    background-color: rgb(54, 167, 54);
     cursor: pointer;
-    /*align-content: center;
+    align-content: center;
     text-align: center;
-    justify-content: center;*/
+    justify-content: center;
     background-color: green;
-    border-color: black;
     border-radius: 15px;
+    border-color: green;
     display: flex;
     flex-direction: column;
+    transition-duration: 0.3s;
 }
+
+button:hover {
+    background-color: rgb(137, 194, 137);
+    color:green;
+}
+
+
+/*HASTA ACÁ TODO EL MAIN*/
+
+.s2 {
+    margin-top: 10vh;
+}
+
+#imgcaja {
+    width: 140px;
+    height: 85px;
+}
+
+#imgvidrio {
+    width: 100px;
+    height:  90px;
+}
+
+#imgplastico {
+    width: 65px;
+    height: 90px;
+}
+
+#imgpapel {
+    width: 80px;
+    height: 80px;
+}
+
+
+
+
+/*PARA AGREGAR IDEAS*/
+
+.add {
+    padding-top: 8vh;
+    color: burlywood;
+}
+
+#newIdea {
+    width: 32vw;
+    height: 35vh;
+    display: flex;
+    -ms-flex-direction: row;
+    margin-bottom: 3vh;
+    border-radius: 8px;
+    background-image: url("/recursos-estaticos/img-forCss/carton.jpg")
+}
+
+#submit {
+    display: flex;
+    flex-direction: row;
+    margin-top: 3vh;
+    margin-bottom: 4vh;
+    border-color: burlywood;
+    border-radius: 8px;
+    color: brown;
+    font-size: 1.9vh;
+    font-weight: bold;
+    background-color: white;
+    width: 4vw;
+    cursor: pointer;
+    transition-duration: 0.3s
+}
+
+#submit:hover {
+    color: white;
+    background-color: brown;
+    border-color: brown;
+}
+
+#foto_ejemplo {
+    border-radius: 8px;
+    font-weight: bold;
+ }

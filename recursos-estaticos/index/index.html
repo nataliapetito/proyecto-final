@@ -5,19 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Mundo reciclado</title>
-    <!-- <link rel = "stylesheet" href = "diseño-index.css"> -->
-    <link rel="stylesheet" type="text/css" href="diseno-index.css" media="screen">
+    <link rel="stylesheet" href="/recursos-estaticos/index/diseno-index.css">
+    <link href="https://fonts.googleapis.com/css?family=Solway&display=swap" rel="stylesheet">
 </head>
 
 <nav>
-    <form method = "GET" action = http://localhost:4999/busqueda>
+    <form method = "GET" action = "/busqueda">
     <input name="buscar" id="buscar" required> <!-- BUSCA EN LA BASE DE DATOS-->
-    <button onclick = a href = "http://localhost:4999/busqueda" id = "buscar">Buscar</button>
+    <button onclick = a href = "/busqueda" id = "search_button">Buscar</button>
     </form>
 </nav>
 
 <body>
-    <div class = "main"><h1>¡Reciclemos juntos!</h1>
+    <main><div class = "titulo"><h1>¡Reciclemos juntos!</h1></div>
+        <section class = "animada">
         <p>"¿Por qué?, ¡¿por qué hacerlo?!" Bueno, sencillamente porque reciclando aportás tu grano de arena a reducir
 la acumulación de basura en el planeta. Sí, dije basura. Ciertos materiales tardan miles de años en degradarse.</p>
         <p>"Pero si la naturaleza misma degrada los materiales" Sí, así es. Y un joven que vive en la casa de sus
@@ -28,18 +29,48 @@ ya moderadamente maduros y capaces, deberíamos poder notar que no está bueno q
 trabajo, y nosotros mientras, seguimos disfrutando la vida, y ensuciando y destruyendo a nuestro paso. 
 Mamá naturaleza no puede con 7550 millones de niños.</p>
         <p>No. No quiero obligarte a reciclar. Un simple llamado a conciencia.</p>
-        <h2>¿Qué te propongo?</h2>
+        </section>
+
+        <div class = "subtitulo"><h2>¿Qué te propongo?</h2></div>
         <p>¡Compartamos nuestras ideas de reciclaje de distintos materiales!</p>
-    </div>
+    
     <div class = "accessTo">
-        <section class = "vidrios"><a href="http://localhost:5500/vidrios-reciclaje"><button><h3>Vidrios</h3></button></a>
-        </section>
-        <section class = "plasticos"><a href="http://localhost:5501/plastico-reciclaje"><button><h3>Plásticos</h3></button></a>
-        </section>
-        <section class = "carton"><a href="http://localhost:5502/carton-reciclaje"><button><h3>Cartón</h3></button></a>
-        </section>
-        <section class = "papel"><a href="http://localhost:5503/papel-reciclaje"><button><h3>Papel</h3></button></a>
-        </section>
+    <!-- <a href="#vidrio" id = "vidrio"><button>Vidrios</button></a>
+    <a href="#plastico" id = "plastico"></a> 
+    <a href="#carton" id = "carton> -->
+        <img src= "../img-forCss/vidrio1.png" id = "imgvidrio">
+        <img src = "../img-forCss/plastico1.png" id = "imgplastico">
+        <img src= "../img-forCss/papel1.png" id = "imgpapel">
+        <img src= "../img-forCss/caja1.png" id = "imgcaja">
+    <!-- <a href="#papel" id = "papel"><button>Papel</button></a> -->
     </div>
+</main>
+
+    <div class = "s2"><h2>Ojalá encuentres algo que llame tu atención :)</h2></div>
+
+    <section class = "carton" id = "carton">
+
+    <!-- MOSTRAR ACÁ EJEMPLOS DE RECICLADOS DE VIDRIOS (conexión con database)  -->
+    <p class = "ideas_carton"></p> <!-- hice abajo el script de esto-->
+    </section>
+    
+
+
+
+
+
+
+
+<!-- SECCION PARA QUE EL USUARIO AGREGUE SUS IDEAS-->
+
+    <section class = "add"><h3>Si tenés alguna idea, ¡dejala acá mismo!</h2>
+        <form method = "POST" action = "/reciclaje-carton"> 
+            <input name = "newIdea" id = "newIdea">
+            <label for = "foto_ejemplo">¿Querés mostrarnos cómo es?</label>
+            <input name = "foto_ejemplo" id = "foto_ejemplo" 
+                   type = "file" multiple = "false" accept = "imagen/*" required> 
+            <button type = "submit" id = "submit">Subir</button>
+        </form>
+    </section>
 </body>
 </html>
