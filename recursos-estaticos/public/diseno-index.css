@@ -82,20 +82,20 @@ h2 {
 }  
 
 .subtitulo {
+    color:green;
     border-radius: 8px;
-    background-color: black;
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16 px;
     margin-top: 6vh;
     margin-right: 30vw;
     padding-top:0.1vh;
     padding-bottom: 0.5vh;
-    padding-left: 0.8vw;
-    width: 15vw;
+    width: 18vw;
     height: 8vh;
-    transition: width 3s;
 }
 
 .subtitulo:hover {
-    width: 30vw;
+    width: 25vw;
 }
 
 nav {
@@ -115,18 +115,11 @@ nav {
 
 #search_button {
     display: inline-flex; 
-    width: 5vw;
+    width: 6vw;
     margin-right: 1vw;
     margin-top: 1.2vh;
-}
-
-div.accessTo {
-    /*background-color: red;*/
-    columns: 4;
-    width: 60vw;
-    margin-top: 10vh;
-    flex-flow: column wrap;
-    flex-direction: column;
+    padding-left: 0.5vw;
+    padding-right: 0.5vw;
 }
 
 button {
@@ -152,14 +145,23 @@ button:hover {
 }
 
 
-/*HASTA ACÁ TODO EL MAIN*/
-
 .s2 {
     margin-top: 10vh;
 }
 
+div.accessTo {
+    /*background-color: red;*/ 
+    columns: 4;
+    width: 60vw;
+    margin-top: 10vh;
+    margin-left: 10vw;
+    flex-direction: column;
+}
+
 #imgcaja {
-    width: 140px;
+    margin-top: 10vh;
+    margin-left: 4vw;
+    width: 120px;
     height: 85px;
 }
 
@@ -169,11 +171,13 @@ button:hover {
 }
 
 #imgplastico {
+    margin-top: 5vh; 
     width: 65px;
     height: 90px;
 }
 
 #imgpapel {
+    margin-left: 6vw;
     width: 80px;
     height: 80px;
 }
@@ -182,6 +186,9 @@ button:hover {
 
 
 /*PARA AGREGAR IDEAS*/
+.ideas {
+    margin-top: 10vh;
+}
 
 .add {
     padding-top: 8vh;
@@ -192,7 +199,7 @@ button:hover {
     width: 32vw;
     height: 35vh;
     display: flex;
-    -ms-flex-direction: row;
+    flex-direction: row;
     margin-bottom: 3vh;
     border-radius: 8px;
     background-image: url("/recursos-estaticos/img-forCss/carton.jpg")
@@ -203,13 +210,15 @@ button:hover {
     flex-direction: row;
     margin-top: 3vh;
     margin-bottom: 4vh;
+    padding-left: 0.5vw;
+    padding-right: 0.5vw;
     border-color: burlywood;
     border-radius: 8px;
     color: brown;
     font-size: 1.9vh;
     font-weight: bold;
     background-color: white;
-    width: 4vw;
+    width: 5vw;
     cursor: pointer;
     transition-duration: 0.3s
 }

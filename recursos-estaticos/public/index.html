@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Mundo reciclado</title>
-    <link rel="stylesheet" href="/recursos-estaticos/index/diseno-index.css">
+    <link rel="stylesheet" href="C:\Users\Natalia\Desktop\proyecto\recursos-estaticos\public\diseno-index.css">
     <link href="https://fonts.googleapis.com/css?family=Solway&display=swap" rel="stylesheet">
 </head>
 
@@ -17,7 +17,7 @@
 </nav>
 
 <body>
-    <main><div class = "titulo"><h1>¡Reciclemos juntos!</h1></div>
+    <div class = "titulo"><h1>¡Reciclemos juntos!</h1></div>
         <section class = "animada">
         <p>"¿Por qué?, ¡¿por qué hacerlo?!" Bueno, sencillamente porque reciclando aportás tu grano de arena a reducir
 la acumulación de basura en el planeta. Sí, dije basura. Ciertos materiales tardan miles de años en degradarse.</p>
@@ -44,33 +44,39 @@ Mamá naturaleza no puede con 7550 millones de niños.</p>
         <img src= "../img-forCss/caja1.png" id = "imgcaja">
     <!-- <a href="#papel" id = "papel"><button>Papel</button></a> -->
     </div>
-</main>
 
-    <div class = "s2"><h2>Ojalá encuentres algo que llame tu atención :)</h2></div>
-
-    <section class = "carton" id = "carton">
-
-    <!-- MOSTRAR ACÁ EJEMPLOS DE RECICLADOS DE VIDRIOS (conexión con database)  -->
-    <p class = "ideas_carton"></p> <!-- hice abajo el script de esto-->
-    </section>
-    
-
-
-
-
-
-
+    <div class = "ideas"><h2>Ojalá encuentres algo que llame tu atención :)</h2>          
+        <h3>{{idea}}</h3>
+    </div>
 
 <!-- SECCION PARA QUE EL USUARIO AGREGUE SUS IDEAS-->
 
     <section class = "add"><h3>Si tenés alguna idea, ¡dejala acá mismo!</h2>
-        <form method = "POST" action = "/reciclaje-carton"> 
+        <form method = "POST" action = "/index" enctype="multipart/form-data"> 
             <input name = "newIdea" id = "newIdea">
-            <label for = "foto_ejemplo">¿Querés mostrarnos cómo es?</label>
+            <label for = "foto_ejemplo">¡Una foto ayudaría para ver cómo es!</label>
             <input name = "foto_ejemplo" id = "foto_ejemplo" 
-                   type = "file" multiple = "false" accept = "imagen/*" required> 
+                   type = "file" multiple = "false" accept = "imagen/*"> 
             <button type = "submit" id = "submit">Subir</button>
         </form>
     </section>
+
+    <script>
+        async function buscar_idea(e) {
+            e.preventDefault()
+
+            var idea = e.target.elements.namedItem("newIdea").value
+            var respuesta = await fetch ('/api/index/' + "newIdea")
+            var add_idea = await respuesta.json()
+
+            var ideas_html = document.querySelector(".ideas h3")
+            ideas_html.textContent = add_idea.idea 
+
+            var all_ideas_html = document.querySelector(".ideas")
+            all_ideas_html.innerHTML += `
+             <img src = "${add_idea.foto_ejemplo}">
+             <p>${add_idea.newIdea}`
+        }
+    </script>
 </body>
 </html>
